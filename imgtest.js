@@ -1,9 +1,11 @@
 let img = [];
 let imgDeck;
+let imgBlack;
 let imgs = 15;
 let board = [];
 let visible = [];
 let s_ohoh;
+let s_applause;
 
 function preload() {
     for (let s = 0; s < imgs; s++) {
@@ -15,11 +17,13 @@ function preload() {
     visible = visible.concat(visible);
     board = shuffle(board.concat(board));
     imgDeck = loadImage('res/deck.bmp');
+    imgBlack = loadImage('res/black.bmp');
     s_ohoh = loadSound('res/ohoh.wav');
+    s_applause = loadSound('res/applause.wav');
 }
 
 function draw_board() {
-    background(200);
+    background(0);
     for (let n = 0; n < 5; n++) {
         for (let s = 0; s < 6; s++) {
             let idx = n + 6 * s;
@@ -35,9 +39,7 @@ function setup() {
 }
 
 let clicked = 0;
-let x_old;
-let y_old;
-let idx_old;
+let stack = [];
 
 function mouseClicked() {
     let mouX = Math.floor(mouseX / 41);
@@ -47,30 +49,36 @@ function mouseClicked() {
     let ypos = mouY * 63;
     console.log(idx, xpos, ypos);
     image(img[board[idx]], xpos, ypos);
+    let obj = {x: xpos, y: ypos, idx: idx};
+    stack.push(obj);
     clicked++;
-    if (clicked === 1) {
-        x_old = xpos;
-        y_old = ypos;
-        idx_old = idx;
-    }
     if (clicked === 2) {
         clicked = 0;
-        // if (idx === idx_old)
-        //     return;
-        if (board[idx] !== board[idx_old])
-            s_ohoh.play();
-        else {
-            visible[idx] = false;
-            visible[idx_old] = false;
+        let ob = stack[0];
+        if (idx !== ob.idx) {
+            if (board[idx] !== board[ob.idx])
+                s_ohoh.play();
+            else {
+                s_applause.play();
+                visible[idx] = false;
+                visible[ob.idx] = false;
+            }
         }
         let timer = setTimeout(function () {
-            image(imgDeck, x_old, y_old);
-            image(imgDeck, xpos, ypos);
+            while (stack.length !== 0) {
+                let ob = stack.pop();
+                if (visible[ob.idx] === true)
+                    image(imgDeck, ob.x, ob.y);
+                else
+                    image(imgBlack, ob.x, ob.y);
+            }
             clearTimeout(timer);
         }, 1000);
     }
     //draw_board();
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
