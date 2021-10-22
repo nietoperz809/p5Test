@@ -11,7 +11,7 @@ function preload() {
     for (let s = 0; s < 15; s++) {
         let name = 'res/idb' + s + '.bmp'
         img[s] = loadImage(name);
-        board.push ({pos: s, visible: true})
+        board.push ({key: s, visible: true})
     }
     board = shuffle(board.concat(board));
     imgDeck = loadImage('res/deck.bmp');
@@ -25,8 +25,6 @@ function draw_board() {
     for (let n = 0; n < 6; n++) {
         for (let s = 0; s < 5; s++) {
             image(imgDeck, n * 41, s * 63);
-            //let idx = n + 6 * s;
-            //image(img[board[idx]], n * 41, s * 63);
         }
     }
 }
@@ -59,7 +57,7 @@ function mouseClicked() {
         return;
     let xpos = mouX * 41;
     let ypos = mouY * 63;
-    image(img[board[idx].pos], xpos, ypos);
+    image(img[board[idx].key], xpos, ypos);
     let obj = {x: xpos, y: ypos, idx: idx};
     stack.push(obj);
     clicked++;
@@ -67,7 +65,7 @@ function mouseClicked() {
         clicked = 0;
         let ob = stack[0];
         if (idx !== ob.idx) {
-            if (board[idx].pos !== board[ob.idx].pos)
+            if (board[idx].key !== board[ob.idx].key)
                 s_ohoh.play();
             else {
                 s_applause.play();
