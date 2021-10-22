@@ -47,7 +47,7 @@ function mouseClicked() {
     let idx = mouX + 5 * mouY;
     let xpos = mouX * 41;
     let ypos = mouY * 63;
-    console.log(idx, xpos, ypos);
+    //console.log(idx, xpos, ypos);
     image(img[board[idx]], xpos, ypos);
     let obj = {x: xpos, y: ypos, idx: idx};
     stack.push(obj);
