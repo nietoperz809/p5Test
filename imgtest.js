@@ -46,8 +46,11 @@ function printScore() {
 
 let clicked = 0;
 let stack = [];
+let click_alowed = true;
 
 function mouseClicked() {
+    if (click_alowed === false)
+        return;
     let mouX = Math.floor(mouseX / 41);
     let mouY = Math.floor(mouseY / 63);
     if (mouX > 5 || mouY > 4)
@@ -74,6 +77,7 @@ function mouseClicked() {
                 board[ob.idx].visible = false;
             }
         }
+        click_alowed = false;
         let timer = setTimeout(function () {
             while (stack.length !== 0) {
                 let ob = stack.pop();
@@ -84,9 +88,13 @@ function mouseClicked() {
             }
             printScore();
             clearTimeout(timer);
+            click_alowed = true;
         }, 1000);
     }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
