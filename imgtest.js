@@ -1,4 +1,3 @@
-let img = [];
 let imgDeck;
 let imgBlack;
 let board = [];
@@ -10,10 +9,11 @@ let browserHits = 0;
 function preload() {
     for (let s = 0; s < 15; s++) {
         let name = 'res/idb' + s + '.bmp'
-        img[s] = loadImage(name);
-        board.push ({key: s, visible: true})
+        let img = loadImage(name);
+        board.push ({image: img, key: s, visible: true})
     }
     board = shuffle(board.concat(board));
+    //console.log(board);
     imgDeck = loadImage('res/deck.bmp');
     imgBlack = loadImage('res/black.bmp');
     s_ohoh = loadSound('res/ohoh.wav');
@@ -57,7 +57,7 @@ function mouseClicked() {
         return;
     let xpos = mouX * 41;
     let ypos = mouY * 63;
-    image(img[board[idx].key], xpos, ypos);
+    image (board[idx].image, xpos, ypos);
     let obj = {x: xpos, y: ypos, idx: idx};
     stack.push(obj);
     clicked++;
