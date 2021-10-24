@@ -1,8 +1,8 @@
 let imgDeck;
 let imgBlack;
 let board = [];
-let s_ohoh;
-let s_applause;
+//let s_ohoh;
+//let s_applause;
 let userHits = 0;
 let browserHits = 0;
 
@@ -16,8 +16,8 @@ function preload() {
     //console.log(board);
     imgDeck = loadImage('deck.bmp');
     imgBlack = loadImage('black.bmp');
-    s_ohoh = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
-    s_applause = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
+    //s_ohoh = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
+    //s_applause = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
 }
 
 function draw_board() {
@@ -68,10 +68,11 @@ function mouseClicked() {
         clicked = 0;
         let ob = stack[0];
         if (idx !== ob.idx) {
-            if (board[idx].key !== board[ob.idx].key)
-                s_ohoh.play();
+            if (board[idx].key !== board[ob.idx].key) {
+                //s_ohoh.play();
+            }
             else {
-                s_applause.play();
+                //s_applause.play();
                 userHits++;
                 board[idx].visible = false;
                 board[ob.idx].visible = false;
