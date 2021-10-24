@@ -2,7 +2,7 @@ let imgDeck;
 let imgBlack;
 let board = [];
 //let s_ohoh;
-//let s_applause; fuck
+//let s_applause; fuckgg
 let userHits = 0;
 let browserHits = 0;
 
