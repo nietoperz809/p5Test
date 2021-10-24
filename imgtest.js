@@ -16,8 +16,8 @@ function preload() {
     //console.log(board);
     imgDeck = loadImage('deck.bmp');
     imgBlack = loadImage('black.bmp');
-    s_ohoh = loadSound('https://github.com/nietoperz809/p5Test/blob/master/ohoh.wav?raw=true');
-    s_applause = loadSound('https://github.com/nietoperz809/p5Test/blob/master/applause.wav?raw=true');
+    s_ohoh = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
+    s_applause = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
 }
 
 function draw_board() {
