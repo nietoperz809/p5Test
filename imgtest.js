@@ -16,8 +16,8 @@ function preload() {
     //console.log(board);
     imgDeck = loadImage('deck.bmp');
     imgBlack = loadImage('black.bmp');
-    s_ohoh = loadSound('ohoh.wav');
-    s_applause = loadSound('applause.wav');
+    s_ohoh = loadSound('https://github.com/nietoperz809/p5Test/blob/master/ohoh.wav?raw=true');
+    s_applause = loadSound('https://github.com/nietoperz809/p5Test/blob/master/applause.wav?raw=true');
 }
 
 function draw_board() {
