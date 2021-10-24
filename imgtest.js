@@ -8,16 +8,16 @@ let browserHits = 0;
 
 function preload() {
     for (let s = 0; s < 15; s++) {
-        let name = 'res/idb' + s + '.bmp'
+        let name = 'idb' + s + '.bmp'
         let img = loadImage(name);
         board.push ({image: img, key: s, visible: true})
     }
     board = shuffle(board.concat(board));
     //console.log(board);
-    imgDeck = loadImage('res/deck.bmp');
-    imgBlack = loadImage('res/black.bmp');
-    s_ohoh = loadSound('res/ohoh.wav');
-    s_applause = loadSound('res/applause.wav');
+    imgDeck = loadImage('deck.bmp');
+    imgBlack = loadImage('black.bmp');
+    s_ohoh = loadSound('ohoh.wav');
+    s_applause = loadSound('applause.wav');
 }
 
 function draw_board() {
