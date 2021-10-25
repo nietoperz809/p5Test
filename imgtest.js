@@ -64,6 +64,7 @@ function mouseClicked() {
     let obj = {x: xpos, y: ypos, idx: idx};
     stack.push(obj);
     clicked++;
+    snddrip.play();
     if (clicked === 2) {
         clicked = 0;
         let ob = stack[0];
