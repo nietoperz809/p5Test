@@ -1,7 +1,6 @@
 let imgDeck;
 let imgBlack;
 let board = [];
-//let s_applause; fuckgg
 let userHits = 0;
 let browserHits = 0;
 
@@ -73,7 +72,7 @@ function mouseClicked() {
                 sndohoh.play();
             }
             else {
-                //s_applause.play();
+                sndapplause.play();
                 userHits++;
                 board[idx].visible = false;
                 board[ob.idx].visible = false;
