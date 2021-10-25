@@ -5,7 +5,7 @@ let board = [];
 let userHits = 0;
 let browserHits = 0;
 
-import sndohoh from 'tunes.js';
+//import sndohoh from 'tunes.js';
 
 function preload() {
     for (let s = 0; s < 15; s++) {
