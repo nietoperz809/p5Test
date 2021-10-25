@@ -13,11 +13,8 @@ function preload() {
         board.push ({image: img, key: s, visible: true})
     }
     board = shuffle(board.concat(board));
-    //console.log(board);
     imgDeck = loadImage('deck.bmp');
     imgBlack = loadImage('black.bmp');
-    //s_ohoh = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
-    //s_applause = loadSound('https://rawcdn.githack.com/nietoperz809/p5Test/3da27d0690209097beb7234f71094009c9af928f/APPLAUSE.WAV');
 }
 
 function draw_board() {
@@ -32,6 +29,10 @@ function draw_board() {
 function setup() {
     createCanvas(800, 600);
     draw_board();
+    setInterval (function()
+    {
+        snddrip.play();
+    },3000);
 }
 
 function printScore() {
